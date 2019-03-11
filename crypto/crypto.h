@@ -15,7 +15,7 @@
 namespace crypto {
 
   extern "C" {
-#include "random.h"
+//#include "random.h"
   }
 
   extern std::mutex random_lock;

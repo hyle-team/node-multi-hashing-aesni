@@ -2,9 +2,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#pragma once
-
-#if !defined(__cplusplus)
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <assert.h>
 #include <stdbool.h>
@@ -39,8 +39,6 @@ union hash_state {
 void hash_permutation(union hash_state *state);
 void hash_process(union hash_state *state, const uint8_t *buf, size_t count);
 
-#endif
-
 enum {
   HASH_SIZE = 32,
   HASH_DATA_AREA = 136
@@ -55,3 +53,7 @@ void hash_extra_jh(const void *data, size_t length, char *hash);
 void hash_extra_skein(const void *data, size_t length, char *hash);
 
 void tree_hash(const char (*hashes)[HASH_SIZE], size_t count, char *root_hash);
+
+#ifdef __cplusplus
+}
+#endif

@@ -20,7 +20,7 @@ namespace cryptonote
     std::ostringstream s;
     binary_archive<true> a(s);
     ::serialization::serialize(a, const_cast<transaction_prefix&>(tx));
-    crypto::cn_fast_hash(s.str().data(), s.str().size(), h);
+    cn_fast_hash(s.str().data(), s.str().size(), h);
   }
   //---------------------------------------------------------------
   crypto::hash get_transaction_prefix_hash(const transaction_prefix& tx)
@@ -49,7 +49,7 @@ namespace cryptonote
     CHECK_AND_ASSERT_MES(r, false, "Failed to parse transaction from blob");
     //TODO: validate tx
 
-    crypto::cn_fast_hash(tx_blob.data(), tx_blob.size(), tx_hash);
+    cn_fast_hash(tx_blob.data(), tx_blob.size(), tx_hash);
     get_transaction_prefix_hash(tx, tx_prefix_hash);
     return true;
   }
